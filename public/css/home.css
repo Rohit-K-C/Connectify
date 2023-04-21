@@ -1,0 +1,145 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    outline: 0;
+    font-family: 'Signika Negative', sans-serif;
+}
+
+body {
+    background-color: #BDB5C0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar {
+    display: flex;
+    overflow: hidden;
+    min-width: 750px;
+    border-bottom: 1px solid white;
+    background-color: #4C3D40;
+
+
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    min-width: 200px;
+    font-size: 20px;
+    padding: 20px 10px;
+}
+
+.logo>a {
+    color: white;
+}
+
+.logo>a:hover {
+    color: #D8D8D8;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow: wrap;
+}
+
+.item>a {
+    min-width: 100px;
+    margin-right: 10px;
+    border: 0 2px 0 0;
+    width: auto;
+    text-align: center;
+    overflow: wrap;
+    font-size: 20px;
+    color: white;
+    padding: 20px 10px;
+    overflow: hidden;
+}
+
+.item a i {
+    color: white;
+}
+
+.item a i:hover {
+    color: #D8D8D8;
+    font-size: 25px;
+    margin-top: -5px;
+}
+
+.set {
+    display: none;
+    z-index: 999;
+    position: absolute;
+    top: 10px;
+    right: 1px;
+    padding: 10px;
+    width: 300px;
+    background-color: white;
+    border: 1px solid black;
+    overflow: hidden;
+}
+.content{
+    position: relative;
+    display: flex;
+    background-color: honeydew;
+    overflow: hidden;
+    min-width: 750px;
+
+}
+.left{
+    background-color: red;
+    width: 25%;
+    min-width: 10%;
+    overflow: wrap;
+    
+}
+.mid{
+    background-color: green;
+    width: 50%;
+    min-width: 10%;
+    overflow: wrap;
+}
+.right{
+    background-color: yellow;
+    width: 25%;
+    min-width: 10%;
+    overflow: wrap;
+}
+
+.container {
+    width: 40%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #FEE715FF;
+    overflow: hidden;
+    margin-bottom: 20px;
+
+}
+.upload-pic {
+    background-color: rgb(32, 30, 30);
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-pic img {
+    display: inline-block;
+    position: relative;
+    width: 400px;
+    height: 400px;
+    min-width: 50px;
+    height: auto;
+    overflow: hidden;
+}
+#file{
+	display: none;
+}
+img[src=""] {
+    display: none;
+}

@@ -1,0 +1,489 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    outline: 0;
+    font-family: "Signika Negative", sans-serif;
+}
+
+body {
+    background-color: #bdb5c0;
+    color: white;
+}
+
+.profile-header {
+    display: flex;
+    border-bottom: 1px solid #d7e9f7;
+    padding: 20px;
+    align-items: center;
+    width: 100%;
+    min-width: 750px;
+    overflow: hidden;
+    background-color: #4c3d40;
+}
+
+.profile-picture {
+    display: inline-block;
+    position: relative;
+    width: 200px;
+    min-width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid #d7e9f7;
+    overflow: hidden;
+    /* cursor: pointer; */
+}
+
+.pp-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.cropper-view-box,
+.cropper-face {
+    border-radius: 50%;
+}
+
+.cropper-face {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.mid-section {
+    display: flex;
+    margin-left: 100px;
+    flex-direction: column;
+    min-width: 400px;
+    width: 400px;
+    max-width: 500px;
+    overflow: hidden;
+}
+
+.mid-section .top {
+    display: flex;
+    min-width: 300px;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.mid-section .mid {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+}
+
+.settings {
+    margin-left: 20px;
+    padding: 0 10px 0 10px;
+    border-radius: 5px;
+    border: 1px solid #d7e9f7;
+    cursor: pointer;
+}
+
+#display {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(167, 164, 164, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+#pop-comment {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(167, 164, 164, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+#upload-image {
+    position: relative;
+    top: 100px;
+    left: 25%;
+    width: 50%;
+    z-index: 9999;
+    background-color: #4C3D40;
+    height: 500px;
+    border: 1px solid white;
+    min-width: 200px;
+    overflow: hidden;
+}
+
+#display-comments {
+    position: relative;
+    top: 60px;
+    left: 25%;
+    width: 50%;
+    z-index: 9999;
+    background-color: #4C3D40;
+    height: 600px;
+    border: 1px solid #d7e9f7;
+    min-width: 200px;
+    overflow: hidden;
+}
+
+.rotate {
+    float: right;
+    font-size: 40px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    border-radius: 50%;
+    transform: rotate(45deg);
+    color: white;
+    cursor: pointer;
+    outline: none;
+    width: 30px;
+    height: 30px;
+    /* border: 1px solid #d7e9f7; */
+    overflow: hidden;
+}
+
+.rotate:hover {
+    background-color: white;
+    color: #4C3D40;
+}
+
+.profile-content {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-width: 745px;
+    overflow: hidden;
+}
+
+.data-container {
+    width: 40%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #d7e9f7;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background-color: #4c3d40;
+    box-sizing: border-box;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.post_info {
+    margin: 10px 0 10px 30px;
+}
+#follower,
+#following {
+    display: none;
+}
+
+.follower,
+.following {
+    width: 40%;
+    display: flex;
+    border: 1px solid #d7e9f7;
+    background-color: #4C3D40;
+}
+
+.title {
+    width: 100%;
+    padding: 15px;
+    border-bottom: 1px solid #d7e9f7;
+}
+
+.title #just-now {
+    color: #d8d8d8;
+    font-size: 12px;
+}
+.user-name {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+    padding: 5px 0 0 10px;
+}
+
+.user-name > a {
+    text-decoration: none;
+    color: white;
+}
+#userName {
+    margin-top: 5px;
+}
+
+.follow-unfollow {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+#f-u {
+    margin-right: 10px;
+    float: right;
+    text-decoration: none;
+    text-align: center;
+    color: #d7e9f7;
+}
+
+.posts {
+    display: flex;
+    overflow: hidden;
+    padding: 5px 10px 5px 10px;
+}
+
+@media only screen and (max-width: 745px) {
+    .posts {
+        width: 600px;
+        margin: 0 0 0 10px;
+        overflow: hidden;
+    }
+}
+
+.user-details {
+    display: flex;
+    overflow: hidden;
+    padding: 5px 10px 5px 10px;
+}
+
+.small-pp {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #d7e9f7;
+    overflow: hidden;
+}
+
+.small-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.user-pp {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #d7e9f7;
+    overflow: hidden;
+}
+
+.user-pic {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.main-image {
+    background-color: rgb(32, 30, 30);
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-image img {
+    display: inline-block;
+    position: relative;
+    width: 400px;
+    height: 400px;
+    min-width: 50px;
+    height: auto;
+    overflow: hidden;
+}
+
+.footer {
+    border-top: 1px solid #d7e9f7;
+    padding: 10px 10px 10px 20px;
+    display: flex;
+}
+
+#heart i.fa-heart {
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+#heart.liked i.fa-heart {
+    color: red;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+#comment {
+    color: white;
+    font-size: 40px;
+    margin-left: 10px;
+}
+
+.like-count {
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+}
+
+/* animated by Rohit K.C for post,follow and follower animation */
+
+.btn-8 .mid-span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.btn-8 .mid-span:before,
+.btn-8 .mid-span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    background: #d7e9f7;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-8 .mid-span:before {
+    width: 1px;
+    height: 0%;
+}
+
+.btn-8 .mid-span:after {
+    height: 1px;
+    width: 0%;
+}
+
+.btn-8 .mid-span:hover:before {
+    height: 100%;
+}
+
+.btn-8 .mid-span:hover:after {
+    width: 100%;
+}
+
+.btn-8 {
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.btn-8:before,
+.btn-8:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-8:before {
+    border-bottom: 1px solid #d7e9f7;
+    border-right: 1px solid transparent;
+}
+
+.btn-8:after {
+    border-bottom: 1px solid transparent;
+    border-right: 1px solid #d7e9f7;
+}
+
+.btn-8:hover:before {
+    width: 99%;
+}
+
+.btn-8:hover:after {
+    height: 98%;
+}
+
+/* for follow and unfollow button */
+
+.fu-8 .fu-span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 10px 10px 10px 30px;
+}
+
+.fu-8 .fu-span:before,
+.fu-8 .fu-span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    background: #d7e9f7;
+    transition: all 0.3s ease-in-out;
+}
+
+.fu-8 .fu-span:before {
+    width: 25%;
+    height: 0%;
+}
+
+.fu-8 .fu-span:after {
+    height: 1px;
+    width: 0%;
+}
+
+.fu-8 .fu-span:hover:before {
+    height: 100%;
+}
+
+.fu-8 .fu-span:hover:after {
+    width: 100%;
+}
+
+.fu-8 {
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.fu-8:before,
+.fu-8:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.fu-8:before {
+    border-bottom: 1px solid #d7e9f7;
+    border-right: 1px solid transparent;
+}
+
+.fu-8:after {
+    border-bottom: 1px solid transparent;
+    border-right: 1px solid #d7e9f7;
+}
+
+.fu-8:hover:before {
+    width: 98%;
+}
+
+.fu-8:hover:after {
+    height: 98%;
+}
