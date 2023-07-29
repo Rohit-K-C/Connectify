@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 
-class HomeController extends Controller
+class HomePageController extends Controller
 {
     public function index()
     {
@@ -17,7 +17,7 @@ class HomeController extends Controller
             $posts = Post::select('*', DB::raw('(SELECT SUM(total_likes) FROM likes WHERE post_id = posts.post_id) as total_likes'))
                 ->get();
 
-            return view('home', ['posts' => $posts]);
+            return view('homepage', ['posts' => $posts]);
         }
     }
 }

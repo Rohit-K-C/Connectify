@@ -19,6 +19,65 @@
         </div>
         <div class="item">
             <a href="/" id="home-link"><i class="fas fa-home"></i></a>
+            <a href="#" id="search-link"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <div class="search-pop">
+                <form id="search-form" action="{{ route('search') }}" method="get">
+                    @csrf
+                    <input type="search" name="search" id="search-input">
+                    <input type="submit" name="Search" value="Search">
+                </form>
+                <span id="search-results"></span>
+            </div>
+
+            <script>
+                $(document).ready(function () {
+                    $("#search-link").on("click", function (event) {
+                        event.preventDefault();
+                        $(".search-pop").toggle();
+                    });
+            
+                    // Handle form submission and AJAX request
+                    $("#search-form").submit(function (event) {
+                        event.preventDefault();
+                        var searchQuery = $("#search-input").val();
+            
+                        if (searchQuery.trim() === "") {
+                            // If the search input is empty or contains only spaces, clear the search-results span
+                            $("#search-results").empty();
+                        } else {
+                            // If the search input is not empty, make the AJAX request
+                            $.ajax({
+                                url: "{{ route('search') }}",
+                                type: "GET",
+                                data: { search: searchQuery },
+                                dataType: "json",
+                                success: function (data) {
+                                    // Update the search-results span with the received data
+                                    var searchResultsSpan = $("#search-results");
+                                    searchResultsSpan.empty(); // Clear any previous results
+            
+                                    if (data.length > 0) {
+                                        // If there are results, append each user_name to the span
+                                        for (var i = 0; i < data.length; i++) {
+                                            searchResultsSpan.append(data[i] + "<br>");
+                                        }
+                                    } else {
+                                        // If no results, show a message
+                                        searchResultsSpan.append("No results found.");
+                                    }
+                                },
+                                error: function (xhr, status, error) {
+                                    console.error(error);
+                                }
+                            });
+                        }
+                    });
+                });
+            </script>
+
+
+
+
             <a href="/notification" id="notification-link"><i class="fa-sharp fa-solid fa-bell"></i></a>
             <a href="/message" id="message-link"><i class="fa-solid fa-message"></i></a>
             <a href="/addQuestion" id="addQuestion-link"><i class="fa-regular fa-square-plus"></i></a>
@@ -34,6 +93,7 @@
             </div>
 
         </div>
+
     </div>
     <script>
         if (window.location.pathname === '/') {

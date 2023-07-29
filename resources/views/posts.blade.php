@@ -19,8 +19,16 @@
             <img src="{{ asset($post->post_image) }}" alt="Post Image">
         </div>
         <div class="footer">
-            <a id="heart"><i id="heart-link" class="fa-solid fa-heart"></i></a>
-            <span id="count" class="like-count">{{ $post->total_likes }}</span>
+            <a id="heart" class="{{ $post->isLikedBy(Auth::user(), $post->post_id) ? 'liked' : '' }}">
+                <i data-post-id="{{ $post->post_id }}" id="heart-link" class="fa-solid fa-heart{{ $post->isLikedBy(Auth::user(), $post->post_id) ? '-active' : '' }}"></i>
+              </a>
+              
+            
+            
+            
+            
+            <span id="count" class="like-count">{{ $post->total_likes ? $post->total_likes : 0 }}</span>
+            
             <a id="comment" onclick="applyComment()"><i id="comments" class="fa-solid fa-comment"></i></a>
         </div>
     </div>

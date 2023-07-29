@@ -35,6 +35,7 @@ class UsersContoller extends Controller
         $user->email = $validatedData['email'];
         $user->password = bcrypt($validatedData['password']);
         $user->contact = $validatedData['contact'];
+        // $user->is_admin ='1';
         $user->remember_token = $request->_token;
         $user->save();
         return redirect('/login');

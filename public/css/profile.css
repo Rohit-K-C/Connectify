@@ -318,10 +318,14 @@ body {
     display: flex;
 }
 
+
 #heart i.fa-heart {
     color: white;
     font-size: 40px;
     cursor: pointer;
+}
+#heart i.fa-heart.active {
+    color: red;
 }
 
 #heart.liked i.fa-heart {

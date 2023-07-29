@@ -2,11 +2,11 @@
     box-sizing: border-box;
     margin: 0;
     outline: 0;
-    font-family: 'Signika Negative', sans-serif;
+    font-family: "Signika Negative", sans-serif;
 }
 
 body {
-    background-color: #BDB5C0;
+    background-color: #bdb5c0;
 }
 
 a {
@@ -18,9 +18,7 @@ a {
     overflow: hidden;
     min-width: 750px;
     border-bottom: 1px solid white;
-    background-color: #4C3D40;
-
-
+    background-color: #4c3d40;
 }
 
 .logo {
@@ -31,12 +29,12 @@ a {
     padding: 20px 10px;
 }
 
-.logo>a {
+.logo > a {
     color: white;
 }
 
-.logo>a:hover {
-    color: #D8D8D8;
+.logo > a:hover {
+    color: #d8d8d8;
 }
 
 .item {
@@ -46,7 +44,7 @@ a {
     overflow: wrap;
 }
 
-.item>a {
+.item > a {
     min-width: 100px;
     margin-right: 10px;
     border: 0 2px 0 0;
@@ -64,7 +62,7 @@ a {
 }
 
 .item a i:hover {
-    color: #D8D8D8;
+    color: #d8d8d8;
     font-size: 25px;
     margin-top: -5px;
 }
@@ -81,53 +79,68 @@ a {
     border: 1px solid black;
     overflow: hidden;
 }
-.content{
+.content {
     position: relative;
     display: flex;
     background-color: honeydew;
     overflow: hidden;
     min-width: 750px;
-
 }
-.left{
+.left {
     background-color: red;
     width: 25%;
     min-width: 10%;
     overflow: wrap;
-    
 }
-.mid{
+.mid {
     background-color: green;
     width: 50%;
     min-width: 10%;
     overflow: wrap;
 }
-.right{
+.right {
     background-color: yellow;
     width: 25%;
     min-width: 10%;
     overflow: wrap;
 }
 
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .container {
     width: 40%;
     /* background-color: red; */
     display: flex;
+    justify-content: center;
     flex-direction: column;
-    border: 1px solid #FEE715FF;
-    overflow: hidden;
-    margin-bottom: 20px;
+    border: 1px solid #fee715ff;
+    padding: 10px;
+    gap: 10px;
+}
 
+#post_description {
+    width: 100%;
+    margin-bottom: 10px;
 }
 .upload-pic {
-    background-color: rgb(32, 30, 30);
-    width: 100%;
+    /* background-color: rgb(32, 30, 30);
+    width: 100%; */
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+#uploadBtn {
+    width: 100%;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+}
 .upload-pic img {
     display: inline-block;
     position: relative;
@@ -137,9 +150,23 @@ a {
     height: auto;
     overflow: hidden;
 }
-#file{
-	display: none;
+#file {
+    display: none;
 }
 img[src=""] {
     display: none;
+}
+.search-pop{
+    position: absolute;
+    display: none;
+    background-color: white;
+    width: 300px;
+    height: auto;
+    padding: 5px;
+    z-index: 5;
+    top: 60px;
+    left: 650px;
+}
+#search-results{
+    color: black;
 }

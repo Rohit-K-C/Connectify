@@ -6,9 +6,106 @@
     font-family: "Signika Negative", sans-serif;
 }
 body {
-    background-color: #bdb5c0;
+    background: url("../images/back1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
 }
-.animate {
+
+.container {
+    display: flex;
+    width: auto;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.bg2 {
+    width: 100%;
+    top: 0;
+    height: 100vh;
+    background-color: #968382;
+    z-index: -1;
+    opacity: 0.4;
+    position: absolute;
+}
+.container form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+.container form p {
+    color: white;
+    font-size: 15pxs;
+}
+#signup {
+    color: white;
+    background-color: #977776;
+    padding: 5px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+}
+#connectify {
+    font-size: 25px;
+    margin-bottom: 10px;
+    color: white;
+    font-family: sans-serif;
+}
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="number"] {
+    width: 300px;
+    padding: 15px;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    margin-bottom: 15px;
+    background-color: #968382;
+    border: 2px solid #968382;
+    opacity: 0.7;
+    height: 50px;
+}
+
+input[type="email"]:hover,
+input[type="password"]:hover,
+input[type="text"]:hover,
+input[type="number"]:hover {
+    border: 2px solid #bab0af;
+    transition: all 0.5s;
+    opacity: 0.8;
+}
+input[type="submit"] {
+    width: 300px;
+    padding: 15px;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    margin-bottom: 15px;
+    background-color: #fbceb5;
+    height: 50px;
+}
+input[type="submit"]:hover {
+    cursor: pointer;
+}
+
+::placeholder {
+    z-index: 2;
+    color: #ffff;
+    opacity: 1.2;
+    font-size: 15px;
+    font-family: sans-serif;
+}
+/* .animate {
     position: absolute;
     left: 200px;
     top: 100px;
@@ -77,7 +174,8 @@ form {
     overflow: hidden;
     animation: changeColor 20s ease-in-out infinite;
     box-sizing: border-box;
-    box-shadow: 0 0 10px white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #eedbbb;
 }
 @keyframes changeColor {
     0% {
@@ -90,7 +188,7 @@ form {
         background-color: #c8b4d0;
     }
     60% {
-        background-color: #4C3D40;
+        background-color: #4c3d40;
     }
     80% {
         background-color: #bdb5c0;
@@ -99,6 +197,8 @@ form {
         background-color: #c8b4d0;
     }
 }
+
+
 form > input {
     width: 300px;
     padding: 10px;
@@ -110,6 +210,11 @@ form > input {
     box-sizing: border-box;
     box-shadow: 0 0 5px black;
 }
+form > input[type='submit']{
+    background-color: #ADB3BC;
+    color: white;
+
+}
 form > input:focus {
     outline: none;
     border: 1px solid black;
@@ -117,3 +222,8 @@ form > input:focus {
 form > input:hover {
     border: 1px solid black;
 }
+
+#signup{
+    text-decoration: none;
+    color: #7f8a9e;
+} */

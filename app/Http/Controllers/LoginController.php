@@ -33,15 +33,24 @@ class LoginController extends Controller
 
         // Authenticate user
         if (Auth::attempt($credentials)) {
-            $request->session()->put('user_id', Auth::id());
-            // Redirect user
-            return redirect()->intended('/');
+            $user = Auth::user();
+            $request->session()->put('user_id', $user->id);
+
+            // Check user role
+            if ($user->is_admin) {
+                // Redirect admin
+                return redirect()->intended('/admin');
+            } else {
+                // Redirect user
+                return redirect()->intended('/');
+            }
         }
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
     }
+
     public function logout(Request $request)
     {
         $request->session()->flush();
