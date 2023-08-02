@@ -26,7 +26,7 @@
                     <input type="search" name="search" id="search-input">
                     <input type="submit" name="Search" value="Search">
                 </form>
-                <span id="search-results"></span>
+                <ul id="search-results"></ul>
             </div>
 
             <script>
@@ -42,7 +42,7 @@
                         var searchQuery = $("#search-input").val();
             
                         if (searchQuery.trim() === "") {
-                            // If the search input is empty or contains only spaces, clear the search-results span
+                            // If the search input is empty or contains only spaces, clear the search-results ul
                             $("#search-results").empty();
                         } else {
                             // If the search input is not empty, make the AJAX request
@@ -52,18 +52,22 @@
                                 data: { search: searchQuery },
                                 dataType: "json",
                                 success: function (data) {
-                                    // Update the search-results span with the received data
-                                    var searchResultsSpan = $("#search-results");
-                                    searchResultsSpan.empty(); // Clear any previous results
+                                    // Update the search-results ul with the received data
+                                    var searchResultsUl = $("#search-results");
+                                    searchResultsUl.empty(); // Clear any previous results
             
                                     if (data.length > 0) {
-                                        // If there are results, append each user_name to the span
+                                        // If there are results, append each username as a clickable link
                                         for (var i = 0; i < data.length; i++) {
-                                            searchResultsSpan.append(data[i] + "<br>");
+                                            var username = data[i];
+                                            var profileUrl = "{{ route('user.profile', ':username') }}";
+                                            profileUrl = profileUrl.replace(':username', username);
+                                            var listItem = $("<li></li>").append($("<a></a>").attr("href", profileUrl).text(username));
+                                            searchResultsUl.append(listItem);
                                         }
                                     } else {
                                         // If no results, show a message
-                                        searchResultsSpan.append("No results found.");
+                                        searchResultsUl.append($("<li>No results found.</li>"));
                                     }
                                 },
                                 error: function (xhr, status, error) {
@@ -74,6 +78,7 @@
                     });
                 });
             </script>
+
 
 
 

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
-use App\Http\Controllers\{HomePageController, LoginController, PostsController, UsersContoller, ProfileController, LikeController, SearchController};
+use App\Http\Controllers\{AdminController, HomePageController, LoginController, PostsController, UsersContoller, ProfileController, LikeController, SearchController};
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Input\Input;
 
@@ -45,3 +45,32 @@ Route::post('/unlike/{postId}', [LikeController::class, 'unlike']);
 
 Route::get('/check_like/{postId}/{userId}', 'LikesController@checkLike');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+
+Route::get('/admin', [AdminController::class, 'index']);
+
+
+// Route::get('/user/{username}', [UsersContoller::class, 'showProfile'])->name('user.profile');
+Route::get('/user/{encodedUsername}', [UsersContoller::class, 'showProfile'])->name('user.profile');
+
+
+
+// admin dashboard link routes
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+Route::get('/manage-user', function () {
+    return view('manage_user');
+})->name('manage-user');
+
+Route::get('/manage-post', function () {
+    return view('manage_post');
+})->name('manage-post');
+
+Route::get('/analytics', function () {
+    return view('analytics');
+})->name('analytics');
+
+Route::get('/settings', function () {
+    return view('settings');
+})->name('settings');
