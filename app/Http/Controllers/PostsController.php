@@ -34,9 +34,9 @@ class PostsController extends Controller
         $post = new Post;
         $post->post_info = $request->post_info;
         $post->user_id = $request->user_id;
-        $imageName = time().'.'.$request->uploadfile->getClientOriginalExtension();
+        $imageName = time() . '.' . $request->uploadfile->getClientOriginalExtension();
         $request->uploadfile->move(public_path('images'), $imageName);
-        $post->post_image = 'images/'.$imageName;
+        $post->post_image = 'images/' . $imageName;
         $post->save();
         return redirect('/');
     }
@@ -63,16 +63,29 @@ class PostsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'content' => 'required|string',
+            'image' => 'nullable|string',
+        ]);
+    
+        $post = Post::findOrFail($id);
+        $post->post_info = $request->input('content');
+        $post->post_image = $request->input('image');
+        $post->user_id = $request->input('author_id');
+        $post->save();
+    
+        return redirect()->route('manage-post')->with('success', 'Post data updated successfully!');
     }
+    
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('manage-post')->with('success', 'Post deleted successfully!');
     }
 }

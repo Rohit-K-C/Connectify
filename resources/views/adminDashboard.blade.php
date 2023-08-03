@@ -15,9 +15,10 @@
             <a href="{{ route('settings') }}" id="settings"><i class="fa-solid fa-gear"></i>Settings</a>
 
         </div>
+
         <div class="logout-container">
             <a><i class="fa-solid fa-user"></i>Rohit</a>
-            <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+            <a href="{{ url('/logout') }}"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
         </div>
     </div>
     <div class="content">

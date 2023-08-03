@@ -10,12 +10,15 @@ use Illuminate\Support\Facades\Auth;
 class Post extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'post_id'; // Specify the custom primary key
+
     protected $table = 'posts';
-    protected $guarded = ['id', 'post_id', 'posted_by'];
+    protected $guarded = ['post_id', 'posted_by']; // Update to use 'post_id'
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class); 
     }
     public function isLikedBy(User $user, $postId)
     {

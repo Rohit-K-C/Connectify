@@ -43,21 +43,17 @@ class UsersContoller extends Controller
     }
     public function showProfile($encodedUsername)
     {
-        // Decode the encoded username to get the actual username
         $username = urldecode($encodedUsername);
 
-        // Retrieve the user data based on the provided username
         $user = User::where('user_name', $username)->first();
 
         if (!$user) {
-            // Handle the case where the user with the given username is not found
             abort(404);
         }
 
         $user_id = $user->id;
         $posts = Post::where('user_id', $user_id)->get();
         if ($posts->isEmpty()) {
-            // If there are no posts, pass null values to the table columns
             $posts = (object)[
                 'post_id' => null,
                 'post_info' => null,
@@ -65,10 +61,28 @@ class UsersContoller extends Controller
                 'user_id' => null,
                 'created_at' => null,
                 'updated_at' => null,
-                // Add more columns here if your 'posts' table has additional fields
             ];
         }
-        // Pass the user data and posts to the view and render the user profile page
+
         return view('userProfile', ['user' => $user, 'posts' => $posts]);
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $user->user_name = $request->input('user_name');
+        $user->email = $request->input('email');
+        $user->contact = $request->input('contact');
+        $user->is_admin = $request->input('is_admin');
+        $user->save();
+        return redirect()->route('manage-user')->with('success', 'User data updated successfully!');
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return redirect()->route('manage-user')->with('success', 'User deleted successfully!');
     }
 }

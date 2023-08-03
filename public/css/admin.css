@@ -30,6 +30,7 @@
     color: #ffff;
     overflow: hidden;
 }
+
 .logo {
     display: flex;
     justify-content: center;
@@ -129,6 +130,186 @@
     text-align: center;
     line-height: 2;
 }
-iframe{
+iframe {
     height: 100vh;
+}
+.search-bar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffff;
+    margin: 10px;
+    border: 1px solid whitesmoke;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    font-family: sans-serif;
+}
+.alert-success {
+    background: #ffe2e2;
+    border: 1px solid whitesmoke;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#success-message {
+    display: none;
+}
+#search-user {
+    border-radius: 30px;
+    border: 1px solid rgb(0, 0, 0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    outline: none;
+    padding: 10px;
+}
+#search-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+#search-button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+.fa-magnifying-glass {
+    font-size: 30px;
+}
+.search-results {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffff;
+    margin: 10px;
+    border: 1px solid whitesmoke;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    font-family: sans-serif;
+}
+.heading {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: whitesmoke;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.heading > span {
+    width: 20%;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    text-align: center;
+    padding: 5px;
+}
+.body-details {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid whitesmoke;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    gap: 10px;
+    margin: 10px 0 10px 0;
+    padding: 10px;
+}
+.body-details > span {
+    width: 20%;
+    text-align: center;
+    padding: 5px;
+    overflow: auto;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination li {
+    list-style: none;
+    margin: 0 5px;
+}
+
+.pagination a {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #333;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.pagination li.active span {
+    background-color: #1b1c1e;
+    color: #fff;
+    padding: 5px 10px 5px 10px;
+    border-radius: 4px;
+}
+#action {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+#edit,
+#delete {
+    background-color: white;
+    padding: 5px;
+    width: 55px;
+    border: 1px solid whitesmoke;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#edit:hover,
+#delete:hover {
+    background-color: #ddd;
+}
+
+.pop {
+    position: absolute;
+    display: flex;
+    background-color: rgb(96, 96, 96);
+    z-index: 35;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 30px;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.pop form{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 10px;
+    border-radius: 30px;
+    color: white;
+}
+.pop form label{
+    font-size: 15px;
+    font-family: sans-serif;
+    border: none;
+   
+}
+.pop form input[type='text'], input[type='email'], input[type='submit']{
+    padding: 7px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 1px solid whitesmoke;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* This sets the overlay's opacity to 0.5 */
+    z-index: 3; /* Ensure the overlay appears above other elements */
+    display: none; /* Start with the overlay hidden */
+}
+#not-found{
+    
+   padding: 30px;
+   text-align: center;
 }

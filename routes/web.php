@@ -18,7 +18,9 @@ use Symfony\Component\Console\Input\Input;
 
 Route::get('/', [HomePageController::class, 'index']);
 
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::match(['GET', 'POST'], '/logout', [LoginController::class, 'logout']);
+
+
 
 
 Route::get('/notification', function () {
@@ -59,13 +61,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/manage-user', function () {
-    return view('manage_user');
-})->name('manage-user');
+Route::get('/manage-user', [AdminController::class, 'manageUser'])->name('manage-user');
+Route::delete('/users/{user}', [UsersContoller::class, 'destroy'])->name('users.destroy');
+Route::post('/users/{user}', [UsersContoller::class,'update'])->name('users.update');
 
-Route::get('/manage-post', function () {
-    return view('manage_post');
-})->name('manage-post');
+Route::get('/manage-post', [AdminController::class, 'managePost'])->name('manage-post');
+Route::delete('/posts/{post}', [PostsController::class, 'destroy'])->name('posts.destroy');
+Route::post('/posts/{post}', [PostsController::class,'update'])->name('posts.update');
+
 
 Route::get('/analytics', function () {
     return view('analytics');
