@@ -1,5 +1,7 @@
 <?php
 
+// app/Http/Controllers/LikeController.php
+
 namespace App\Http\Controllers;
 
 use App\Models\Like;
@@ -11,6 +13,7 @@ class LikeController extends Controller
     {
         $userId = auth()->user()->id;
         $like = Like::where('post_id', $postId)->where('user_id', $userId)->first();
+        
 
         if (!$like) {
             $like = new Like;
@@ -18,28 +21,14 @@ class LikeController extends Controller
             $like->user_id = $userId;
             $like->total_likes = 1;
             $like->save();
-        }
-
-        return response()->json(['status' => 'success']);
-    }
-
-    public function unlike($postId)
-    {
-        $userId = auth()->user()->id;
-        $like = Like::where('post_id', $postId)->where('user_id', $userId)->first();
-
-        if ($like) {
+        } else {
             $like->delete();
         }
 
-        return response()->json(['status' => 'success']);
-    }
+        $totalLikes = Like::where('post_id', $postId)->count();
 
-    public function checkLike($postId)
-    {
-        $userId = auth()->user()->id;
-        $liked = Like::where('post_id', $postId)->where('user_id', $userId)->exists();
-
-        return response()->json(['liked' => $liked]);
+        return response()->json(['status' => 'success', 'total_likes' => $totalLikes]);
     }
 }
+
+

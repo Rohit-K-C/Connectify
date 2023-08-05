@@ -156,7 +156,7 @@ a {
 img[src=""] {
     display: none;
 }
-.search-pop{
+.search-pop {
     position: absolute;
     display: none;
     background-color: white;
@@ -167,6 +167,14 @@ img[src=""] {
     top: 60px;
     left: 650px;
 }
-#search-results{
+#search-results {
     color: black;
+}
+
+.fa-heart {
+    font-size: 40px;
+    color: white;
+}
+.fa-heart.liked {
+    color: red; /* Set the color to red */
 }

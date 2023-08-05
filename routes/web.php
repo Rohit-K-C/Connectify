@@ -42,8 +42,12 @@ Route::post('/addQuestion', [PostsController::class, 'store']);
 Route::get('/addQuestion', [PostsController::class, 'create']);
 Route::get('/profile', [ProfileController::class, 'index']);
 
-Route::post('/like/{postId}', [LikeController::class, 'like']);
-Route::post('/unlike/{postId}', [LikeController::class, 'unlike']);
+// Route::post('/like/{postId}', [LikeController::class, 'like']);
+// Route::post('/unlike/{postId}', [LikeController::class, 'unlike']);
+Route::post('/like/{postId}', [LikeController::class, 'like'])->name('like.post');
+
+
+
 
 Route::get('/check_like/{postId}/{userId}', 'LikesController@checkLike');
 Route::get('/search', [SearchController::class, 'search'])->name('search');

@@ -11,7 +11,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'post_id'; // Specify the custom primary key
+    protected $primaryKey = 'id';
 
     protected $table = 'posts';
     protected $guarded = ['post_id', 'posted_by']; // Update to use 'post_id'
@@ -28,6 +28,14 @@ class Post extends Model
             ->where('likes.user_id', $user->id)
             ->exists();
     }
+    // public function isLikedBy(User $user, $postId)
+    // {
+    //     return $this->likes()
+    //         ->join('users', 'likes.user_id', '=', 'users.id')
+    //         ->where('likes.post_id', $postId)
+    //         ->where('likes.user_id', $user->id)
+    //         ->exists();
+    // }
     
     
 

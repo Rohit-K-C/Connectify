@@ -13,7 +13,7 @@
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             var postId = parseInt($("i.fa-heart").data("post-id"));
             var isLiked = $("#heart").hasClass("liked");
@@ -60,7 +60,7 @@
                 }
             });
         });
-    </script>
+    </script> --}}
 
 
 </head>
@@ -89,9 +89,10 @@
         </div>
     </div>
     <div class="main">
-
+      
         @include('posts')
     </div>
 </body>
 
 </html>
+
