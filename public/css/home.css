@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #bdb5c0;
+    background-color: #17181c;
 }
 
 a {
@@ -17,8 +17,9 @@ a {
     display: flex;
     overflow: hidden;
     min-width: 750px;
-    border-bottom: 1px solid white;
-    background-color: #4c3d40;
+    border-bottom: 1px solid rgb(85, 83, 83);
+    background-color: #1e1f24;
+    box-shadow: 0 2px 4px rgbA(38, 40, 47, 0.1);
 }
 
 .logo {

@@ -1,9 +1,7 @@
-<!-- resources/views/homepage.blade.php -->
 <!DOCTYPE html>
 <html>
 
 <head>
-    <!-- ... Your other meta tags, stylesheets, and scripts ... -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
@@ -36,6 +34,9 @@
                     {{ $likesData[$post->post_id] ?? 0 }}
                 </span>
                 <a id="comment" onclick="applyComment()"><i id="comments" class="fa-solid fa-comment"></i></a>
+                <span id="count-{{ $post->post_id }}" class="like-count">
+                    {{ count($post->comments) }}
+                </span>
             </div>
         </div>
         @endforeach
@@ -72,9 +73,9 @@
             });
         }
     </script>
-    
-    
-    
+
+
+
 
 
 

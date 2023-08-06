@@ -11,7 +11,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'post_id';
 
     protected $table = 'posts';
     protected $guarded = ['post_id', 'posted_by']; // Update to use 'post_id'
@@ -28,6 +28,14 @@ class Post extends Model
             ->where('likes.user_id', $user->id)
             ->exists();
     }
+    public function isCommentedBy(User $user, $postId)
+    {
+        return $this->comments()
+            ->join('users', 'comments.user_id', '=', 'users.id')
+            ->where('comments.post_id', $postId)
+            ->where('comments.user_id', $user->id)
+            ->exists();
+    }
     // public function isLikedBy(User $user, $postId)
     // {
     //     return $this->likes()
@@ -42,6 +50,10 @@ class Post extends Model
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'post_id');
     }
     
 }

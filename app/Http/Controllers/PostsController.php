@@ -47,9 +47,11 @@ class PostsController extends Controller
     public function show(string $id)
     {
         // Find the post by ID and eager load the 'likes' relationship
-        $post = Post::with('likes')->findOrFail($id);
+        $post = Post::with('likes', 'comments')->findOrFail($id);
 
+        // Ensure the $post variable is properly passed to the view
         return view('post.show', compact('post'));
+
     }
 
     /**

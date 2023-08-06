@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
-use App\Http\Controllers\{AdminController, HomePageController, LoginController, PostsController, UsersContoller, ProfileController, LikeController, SearchController};
+use App\Http\Controllers\{AdminController, CommentController, HomePageController, LoginController, PostsController, UsersContoller, ProfileController, LikeController, SearchController};
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Input\Input;
 
@@ -72,6 +72,7 @@ Route::post('/users/{user}', [UsersContoller::class,'update'])->name('users.upda
 Route::get('/manage-post', [AdminController::class, 'managePost'])->name('manage-post');
 Route::delete('/posts/{post}', [PostsController::class, 'destroy'])->name('posts.destroy');
 Route::post('/posts/{post}', [PostsController::class,'update'])->name('posts.update');
+Route::post('/submit-comment', [CommentController::class,'comment'])->name('submit-comment.comment');
 
 
 Route::get('/analytics', function () {

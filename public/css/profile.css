@@ -6,8 +6,11 @@
 }
 
 body {
-    background-color: #bdb5c0;
+    /* background-color: #bdb5c0; */
     color: white;
+    /* border-bottom: 1px solid rgb(85, 83, 83); */
+    background-color: #1e1f24;
+    /* box-shadow: 0 2px 4px rgbA(38, 40, 47, 0.1); */
 }
 
 .profile-header {
@@ -84,7 +87,7 @@ body {
 #display {
     display: none;
     position: fixed;
-    z-index: 9999;
+    z-index: 10;
     top: 0;
     left: 0;
     width: 100%;
@@ -97,12 +100,13 @@ body {
 #pop-comment {
     display: none;
     position: fixed;
-    z-index: 9999;
+    z-index: 11;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(167, 164, 164, 0.5);
+    /* background-color: red; */
     justify-content: center;
     align-items: center;
 }
@@ -112,7 +116,7 @@ body {
     top: 100px;
     left: 25%;
     width: 50%;
-    z-index: 9999;
+    z-index: 10;
     background-color: #4C3D40;
     height: 500px;
     border: 1px solid white;
@@ -125,15 +129,22 @@ body {
     top: 60px;
     left: 25%;
     width: 50%;
-    z-index: 9999;
-    background-color: #4C3D40;
+    z-index: 13;
+    /* background-color: #1e1f24; */
     height: 600px;
-    border: 1px solid #d7e9f7;
+    border-bottom: 1px solid rgb(85, 83, 83);
+    background-color: #1e1f24;
+    box-shadow: 0 2px 4px rgbA(38, 40, 47, 0.1);
     min-width: 200px;
     overflow: hidden;
 }
+.rotate{
+    /* background-color: red; */
+    width: 100%;
+}
 
-.rotate {
+.rotate>span {
+    
     float: right;
     font-size: 40px;
     margin-top: 5px;
@@ -142,6 +153,7 @@ body {
     align-items: center;
     margin-right: 10px;
     border-radius: 50%;
+    border: 1px solid white;
     transform: rotate(45deg);
     color: white;
     cursor: pointer;
@@ -152,9 +164,11 @@ body {
     overflow: hidden;
 }
 
-.rotate:hover {
+.rotate>span:hover {
     background-color: white;
     color: #4C3D40;
+    border: 1px solid black;
+   
 }
 
 .profile-content {
@@ -165,6 +179,7 @@ body {
     flex-direction: column;
     min-width: 745px;
     overflow: hidden;
+    /* background-color: red; */
 }
 
 .data-container {
@@ -172,12 +187,15 @@ body {
     /* background-color: red; */
     display: flex;
     flex-direction: column;
-    border: 1px solid #d7e9f7;
+    /* border: 1px solid #d7e9f7; */
     overflow: hidden;
     margin-bottom: 20px;
-    background-color: #4c3d40;
+    border: 1px solid rgb(85, 83, 83);
+    background-color: #1e1f24;
+    box-shadow: 0 2px 4px rgbA(38, 40, 47, 0.1);
     box-sizing: border-box;
-    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    /* box-shadow: 0 0 5px rgba(0,0,0,0.5); */
+    height: 500px;
 }
 .post_info {
     margin: 10px 0 10px 30px;
@@ -239,7 +257,7 @@ body {
 .posts {
     display: flex;
     overflow: hidden;
-    padding: 5px 10px 5px 10px;
+    padding: 5px 10px 10px 10px;
 }
 
 @media only screen and (max-width: 745px) {
@@ -291,15 +309,16 @@ body {
 }
 
 .main-image {
-    background-color: rgb(32, 30, 30);
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
+    border-top: 1px solid #4c3d40;
+
+    background-color: #1e1f24;
+   
     width: 100%;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 400px;
 }
 
 .main-image img {
@@ -490,4 +509,111 @@ body {
 
 .fu-8:hover:after {
     height: 98%;
+}
+
+.user-small-image{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.cmnt-pp-image{
+  
+    display: inline-block;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #1e1f24;
+    display: flex;
+}
+
+.comment-container{
+    background-color: #17181c;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.edit-name{
+    /* background-color: red; */
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    
+}
+.edit-name form{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-direction: row;
+    margin-top: 10px;
+    gap: 10px;
+}
+.edit-name form >input[type='text']{
+    width: 80%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid whitesmoke;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #56565a;
+    color: white;
+    font-size: 15px;
+   
+
+}
+.edit-name form >button[type='submit']{
+    border-radius: 20px;
+    background-color: white;
+    border: 1px solid black;
+    
+}
+.edit-name form >button[type='submit']:hover{
+    background-color: grey;
+    color: white;
+    
+}
+.show-comments{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+.comment-details{
+    border: 1px solid whitesmoke;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-radius: 20px;
+    padding: 10px;
+    width: auto;
+    height: auto;
+    /* gap: 10px; */
+}
+.comment-details>a{
+    text-decoration: none;
+    color: white;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+.scroll-comments {
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+    scroll-behavior: auto;
+}
+.scroll-comments::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scroll-comments::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
 }

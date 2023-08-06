@@ -13,69 +13,46 @@
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    {{-- <script>
-        $(document).ready(function() {
-            var postId = parseInt($("i.fa-heart").data("post-id"));
-            var isLiked = $("#heart").hasClass("liked");
-            console.log(isLiked);
-            if (isLiked) {
-                $("#heart i.fa-heart").addClass("active");
-            } else {
-                $("#heart i.fa-heart").removeClass("active");
-            }
-            
-            $("#heart").click(function() {
-                var likeCount = parseInt($("#count").text());
-                
-                if($(this).hasClass("liked")) {
-                    $(this).removeClass("liked");
-                    $(this).find("i.fa-heart").css("color", "white");
-                    likeCount--;
-                    $("#count").text(likeCount);
-                    
-                    // Send a request to remove the like from the table
-                    $.ajax({
-                        url: "/unlike/" + postId,
-                        type: "POST",
-                        data: { _token: "{{ csrf_token() }}" },
-                        success: function(response) {
-                            console.log(response);
-                        }
-                    });
-                } else {
-                    $(this).addClass("liked");
-                    $(this).find("i.fa-heart").css("color", "red");
-                    likeCount++;
-                    $("#count").text(likeCount);
-                    
-                    // Send a request to add the like to the table
-                    $.ajax({
-                        url: "/like/" + postId,
-                        type: "POST",
-                        data: { _token: "{{ csrf_token() }}" },
-                        success: function(response) {
-                            console.log(response);
-                        }
-                    });
-                }
-            });
-        });
-    </script> --}}
 
 
 </head>
 
 <body>
-    
+
     @include('nav')
     <div id="pop-comment">
         <div id="display-comments">
-            <div class="rotate" onclick="hideComment()">+</div>
+            <div class="comment-container">
+                <div class="rotate" onclick="hideComment()"><span>+</span></div>
+                <div class="edit-name">
+                    @foreach ($posts as $post)
+                    <form action="{{ route('submit-comment.comment') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="post_id" value="{{ $post->post_id }}">
+                        <input type="text" placeholder="Write a comment..." name="comment">
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+                <div class="scroll-comments">
+                    @forelse ($post->comments as $comment)
 
-            <!-- <div class="edit-name">
-                <input type="text" value="Rohit K.C" name="name">
+                    <div class="show-comments">
+                        <div class="cmnt-pp-image">
+                            <img class="user-small-image" src="{{ asset('images/pp.png') }}" alt="">
+                        </div>
+                        <div class="comment-details">
+                            <a href="">{{ $comment->user->user_name }}</a>
+                            <span>{{ $comment->comments }}</span>
 
-            </div> -->
+                        </div>
+                    </div>
+
+                    @empty
+                    <li>No comments for this post yet.</li>
+                    @endforelse
+                    @endforeach
+                </div>
+            </div>
             <script>
                 function applyComment() {
                     var element = document.getElementById("pop-comment").style.display = "block";
@@ -89,10 +66,9 @@
         </div>
     </div>
     <div class="main">
-      
+
         @include('posts')
     </div>
 </body>
 
 </html>
-

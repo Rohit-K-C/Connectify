@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,19 +21,16 @@ class HomePageController extends Controller
                 $userId = $user->id;
             }
 
-            // $posts  = Post::pluck('post_id')->toArray();
-            // $likesData = Like::whereIn('post_id', $posts)->pluck('total_likes', 'post_id')->toArray();
-            // dd($likesData);
+            // Fetch likes data
             $likesData = Like::pluck('total_likes', 'post_id')->toArray();
-            $posts = Post::all();
-            // dd($posts,$likesData);
 
-            return view('homepage', ['posts'=>$posts, 'likesData'=>$likesData]);
+            // Fetch comments data and handle null values by providing a default value of 0
+            $commentsData = Comment::pluck('total_comments', 'post_id')->map(fn($value) => $value ?? 0)->toArray();
 
-            // $posts = Post::select('*', DB::raw('(SELECT SUM(total_likes) FROM likes WHERE post_id = posts.post_id) as total_likes'))
-            //     ->get();
-            // // dd($posts);
-            // return view('homepage', ['posts' => $posts]);
+            // Fetch all posts and eagerly load the 'comments' relationship
+            $posts = Post::with('comments')->get();
+
+            return view('homepage', ['posts' => $posts, 'likesData' => $likesData, 'commentsData' => $commentsData]);
         }
     }
 }

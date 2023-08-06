@@ -89,12 +89,27 @@
     <!-- pop-up comment -->
     <div id="pop-comment">
         <div id="display-comments">
-            <div class="rotate" onclick="hideComment()">+</div>
+            <div class="comment-container">
+                <div class="rotate" onclick="hideComment()"><span>+</span></div>
+                <div class="edit-name">
+                    <input type="text" value="Rohit K.C" name="name">
+                </div>
 
-            <!-- <div class="edit-name">
-                <input type="text" value="Rohit K.C" name="name">
+                {{-- for each loop chahiyo yo div ma
+                     --}}
+                <div class="show-comments">
 
-            </div> -->
+                    <div class="cmnt-pp-image">
+                        <img class="user-small-image" src="{{ asset('images/pp.png') }}" alt="">
+                    </div>
+                    <div class="comment-details">
+                        <a href="">Rohit K.C</a>
+                        <span>This is a nice pic hahsf heye hai shusf hueehuf ugseugfs guegf seedfhskf hksj hegue ukhdfh
+                            igisdf gisfig</span>
+                    </div>
+
+                </div>
+            </div>
             <script>
                 function applyComment() {
                     var element = document.getElementById("pop-comment").style.display = "block";

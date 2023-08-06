@@ -22,6 +22,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Like::class);
     }
+    public function comments()
+    {
+        return $this->hasMany(Like::class);
+    }
 
     /**
      * The attributes that are mass assignable.
