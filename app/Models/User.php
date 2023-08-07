@@ -13,7 +13,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     protected $primaryKey = 'id';
     protected $table = 'users';
-   
+
     public function posts()
     {
         return $this->hasMany(Post::class);
@@ -24,9 +24,22 @@ class User extends Authenticatable
     }
     public function comments()
     {
-        return $this->hasMany(Like::class);
+        return $this->hasMany(Comment::class);
+    }
+    public function profileImage()
+    {
+        return $this->hasOne(ProfileImage::class, 'user_id');
     }
 
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'followed_id', 'follower_id');
+    }
+
+    public function followedUsers()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'follower_id', 'followed_id');
+    }
     /**
      * The attributes that are mass assignable.
      *

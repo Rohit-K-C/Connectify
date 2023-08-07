@@ -42,6 +42,13 @@ Route::post('/addQuestion', [PostsController::class, 'store']);
 Route::get('/addQuestion', [PostsController::class, 'create']);
 Route::get('/profile', [ProfileController::class, 'index']);
 
+
+Route::post('/upload-image', [ProfileController::class, 'upload'])->name('upload-image.upload');
+Route::post('/unfollow', [ProfileController::class, 'unfollow']);
+Route::post('/follow', [ProfileController::class, 'follow']);
+
+
+
 // Route::post('/like/{postId}', [LikeController::class, 'like']);
 // Route::post('/unlike/{postId}', [LikeController::class, 'unlike']);
 Route::post('/like/{postId}', [LikeController::class, 'like'])->name('like.post');

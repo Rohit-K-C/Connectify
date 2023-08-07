@@ -29,6 +29,7 @@ class HomePageController extends Controller
 
             // Fetch all posts and eagerly load the 'comments' relationship
             $posts = Post::with('comments')->get();
+            // dd($posts);
 
             return view('homepage', ['posts' => $posts, 'likesData' => $likesData, 'commentsData' => $commentsData]);
         }

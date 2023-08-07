@@ -33,10 +33,12 @@
                 <span id="count-{{ $post->post_id }}" class="like-count">
                     {{ $likesData[$post->post_id] ?? 0 }}
                 </span>
-                <a id="comment" onclick="applyComment()"><i id="comments" class="fa-solid fa-comment"></i></a>
+                {{-- <a id="comment" onclick="applyComment()"><i id="comments" class="fa-solid fa-comment"></i></a> --}}
+                <a class="comment-btn" onclick="applyComment(this)" data-post-id="{{ $post->post_id }}"><i class="fa-solid fa-comment"></i></a>
                 <span id="count-{{ $post->post_id }}" class="like-count">
                     {{ count($post->comments) }}
                 </span>
+               
             </div>
         </div>
         @endforeach
