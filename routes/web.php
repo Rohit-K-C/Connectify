@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
-use App\Http\Controllers\{AdminController, CommentController, HomePageController, LoginController, PostsController, UsersContoller, ProfileController, LikeController, SearchController};
+use App\Http\Controllers\{AdminController, CommentController, ContentBasedController, EmojiController, HomePageController, LoginController, PostsController, UsersContoller, ProfileController, LikeController, MessagesController, SearchController, UserSimilarities};
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Input\Input;
 
@@ -26,11 +26,14 @@ Route::match(['GET', 'POST'], '/logout', [LoginController::class, 'logout']);
 Route::get('/notification', function () {
     return view('notification');
 });
-Route::get('/message', function () {
-    return view('message');
-});
+// Route::get('/message', function () {
+//     return view('message');
+// });
 
 
+Route::get('/message-box', [MessagesController::class, 'messageBox']);
+Route::get('/message/{id}', [MessagesController::class, 'viewMessages'])->name('user.message');
+Route::post('/send-message', [MessagesController::class, 'sendMessage'])->name('send.message');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::get('/login', [LoginController::class, 'create']);
@@ -41,6 +44,20 @@ Route::get('/createUser', [UsersContoller::class, 'create']);
 Route::post('/addQuestion', [PostsController::class, 'store']);
 Route::get('/addQuestion', [PostsController::class, 'create']);
 Route::get('/profile', [ProfileController::class, 'index']);
+// Route::get('/user/profile/{user_id}', [ProfileController::class,'showProfile'])->name('user.profile');
+// Route::get('/calculate-similarities', [UserSimilarities::class, 'calculateUserSimilarities']);
+
+Route::get('/calculate-user-similarities', [UserSimilarities::class, 'calculateUserSimilarities'])->name('calculateUserSimilarities');
+Route::get('/generate-recommendations/{userId}', [UserSimilarities::class, 'generateRecommendations'])->name('generateRecommendations');
+
+Route::get('/content-based-recommendations', [ContentBasedController::class, 'generateContentBasedRecommendations'])->name('contentBasedRecommendations');
+
+
+
+
+
+Route::get('/emojis', [EmojiController::class, 'getEmojis'])->name('emojis.index');
+
 
 
 Route::post('/upload-image', [ProfileController::class, 'upload'])->name('upload-image.upload');

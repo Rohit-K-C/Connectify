@@ -31,6 +31,25 @@ class ProfileController extends Controller
             'totalFollowing' => $totalFollowing,
         ]);
     }
+    public function showProfile($user_id)
+    {
+        $likesData = Like::pluck('total_likes', 'post_id')->toArray();
+        $posts = Post::where('user_id', $user_id)->get();
+        $user = User::with(['profileImage', 'followers', 'followedUsers'])->find($user_id);
+
+        $totalFollowers = $user->followers()->count();
+        $totalFollowing = $user->followedUsers()->count();
+        $user = User::with(['profileImage', 'followers', 'followedUsers'])->find($user_id);
+        return view('profile', [
+            'posts' => $posts,
+            'likesData' => $likesData,
+            'user' => $user,
+            'totalFollowers' => $totalFollowers,
+            'totalFollowing' => $totalFollowing,
+        ]);
+        // return response()->json($user); // Return user data as JSON response
+    }
+
 
     public function upload(Request $request)
     {
@@ -70,7 +89,6 @@ class ProfileController extends Controller
     {
         $userId = $request->input('user_id');
         $followerId = auth()->user()->id;
-
         Follow::where('follower_id', $followerId)
             ->where('followed_id', $userId)
             ->delete();
@@ -78,23 +96,18 @@ class ProfileController extends Controller
     }
     public function follow(Request $request)
     {
-        $followerId = $request->input('user_id'); //8
-        $followedId = auth()->user()->id; //1
-
-        // Check if the follow relationship already exists
+        $followerId = $request->input('user_id');
+        $followedId = auth()->user()->id; 
         $existingFollow = Follow::where('follower_id', $followedId)
             ->where('followed_id', $followerId)
             ->first();
-
         if (!$existingFollow) {
             Follow::create([
                 'follower_id' => $followedId,
                 'followed_id' => $followerId,
             ]);
-
             return back()->with('success', 'Followed successfully');
         }
-
         return back()->with('error', 'You are already following this user');
     }
 }

@@ -18,57 +18,7 @@
 <body>
     @include('nav')
 
-    {{-- @foreach ($posts as $post)
-    <div id="pop-comment" style="display: none;">
-        <div id="display-comments">
-            <div class="comment-container">
-                <div class="rotate" onclick="hideComment('{{ $post->post_id }}')"><span>+</span></div>
-                <div class="edit-name">
-                    <form action="{{ route('submit-comment.comment', ['postId' => $post->post_id]) }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="post_id" value="{{ $post->post_id }}">
-                        <input type="text" placeholder="Write a comment..." name="comment">
-                        <button type="submit">Submit</button>
-                    </form>
-                </div>
-                <div class="scroll-comments">
-                    @forelse ($post->comments as $comment)
-                    <div class="show-comments">
-                        <div class="cmnt-pp-image">
-                            <img class="user-small-image" src="{{ asset('images/pp.png') }}" alt="">
-                        </div>
-                        <div class="comment-details">
-                            <a href="">{{ $comment->user->user_name }}</a>
-                            <span>{{ $comment->comments }}</span>
-                        </div>
-                    </div>
-                    @empty
-                    <span>No comments for this post yet.</span>
-                    @endforelse
-                </div>
-            </div>
-        </div>
-    </div>
-    @endforeach
-    <script>
-        function applyComment(button) {
-    const postId = button.dataset.postId;
-    const commentsContainer = document.querySelector(`.comments-container[data-post-id="${postId}"]`);
-    commentsContainer.style.display = 'block';
-}
 
-function hideComment(button) {
-    const postId = button.dataset.postId;
-    const commentsContainer = document.querySelector(`.comments-container[data-post-id="${postId}"]`);
-    commentsContainer.style.display = 'none';
-}
-
-
-    </script>
-
-    <div class="main">
-        @include('posts')
-    </div> --}}
 
     @foreach ($posts as $post)
     <div class="post-container">
@@ -77,7 +27,13 @@ function hideComment(button) {
             <div id="posts" class="data-container">
                 <div class="posts" id="post-css">
                     <div class="small-pp">
-                        <img class="small-image" src="{{ asset($post->post_image) }}" alt="">
+                        @if ($post->user->profileImage)
+                        <img class="small-image" src="{{ $post->user->profileimage->user_image }}" alt="Profile Image">
+                        @else
+
+                        <img class="small-image" src="{{ asset('images/default-pp.png') }}" alt="Default Profile Image">
+                        @endif
+
                     </div>
                     <div class="title">
                         <span>{{ $post->user->user_name }}</span>
@@ -118,7 +74,14 @@ function hideComment(button) {
                 @forelse ($post->comments as $comment)
                 <div class="comment">
                     <div class="cmnt-pp-image">
-                        <img class="user-small-image" src="{{ asset('images/pp.png') }}" alt="">
+                        @if ($comment->user->profileImage)
+                        <img class="user-small-image" src="{{ $comment->user->profileImage->user_image }}"
+                            alt="Profile Image">
+                        @else
+                        <img class="user-small-image" src="{{ asset('images/default-pp.png') }}"
+                            alt="Default Profile Image">
+                        @endif
+                        {{-- <img class="user-small-image" src="{{ asset('images/pp.png') }}" alt=""> --}}
                     </div>
                     <div class="comment-details">
                         <a href="">{{ $comment->user->user_name }}</a>

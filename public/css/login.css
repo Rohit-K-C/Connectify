@@ -5,30 +5,54 @@
     padding: 0;
     font-family: "Signika Negative", sans-serif;
 }
-body {
-    background: url("../images/back1.jpg");
+/* body {
+    background: url("../images/login-page-image.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     height: 100vh;
+} */
+body{
+    background-color: #171717;
 }
+.main-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+ 
 
+}
 .container {
     display: flex;
-    width: auto;
-    height: 100vh;
     justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: #171717;
+    width: 600px;
+    height: 90vh;
+    border-radius: 30px;
+    /* border: 2px solid #fffa96; */
 }
-.bg2 {
-    width: 100%;
-    top: 0;
-    height: 100vh;
-    background-color: #968382;
-    z-index: -1;
-    opacity: 0.4;
-    position: absolute;
+.login-banner{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+    /* border: 2px solid #fffa96; */
+    background-color: #171717;
+    height: 90vh;
+    border-radius: 30px;
+    width: 600px;
+
+
+}
+.login-banner img{
+    width: 500px;
+    border-radius: 30px;
+    border: 2px solid #fffa96;
+    margin-bottom: 30px;
+
 }
 .container form {
     display: flex;
@@ -57,7 +81,7 @@ body {
 #connectify {
     font-size: 25px;
     margin-bottom: 10px;
-    color: white;
+    color: #fffa96;
     font-family: sans-serif;
 }
 input[type="email"],
@@ -71,7 +95,7 @@ input[type="number"] {
     border: none;
     margin-bottom: 15px;
     background-color: #968382;
-    border: 2px solid #968382;
+    border: 2px solid #fffa96;
     opacity: 0.7;
     height: 50px;
 }
@@ -80,7 +104,7 @@ input[type="email"]:hover,
 input[type="password"]:hover,
 input[type="text"]:hover,
 input[type="number"]:hover {
-    border: 2px solid #bab0af;
+    border: 2px solid #fffa96;
     transition: all 0.5s;
     opacity: 0.8;
 }
@@ -91,11 +115,16 @@ input[type="submit"] {
     outline: none;
     border: none;
     margin-bottom: 15px;
-    background-color: #fbceb5;
+    background-color: #171717;
+    color: #fffa96;
     height: 50px;
+    border: 2px solid #fffa96;
 }
 input[type="submit"]:hover {
     cursor: pointer;
+    background-color: rgba(255, 253, 152,0.3)
+    
+   
 }
 
 ::placeholder {

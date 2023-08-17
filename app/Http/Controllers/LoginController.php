@@ -8,9 +8,6 @@ use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('login');
@@ -24,28 +21,20 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:8',
         ]);
-
         if ($validator->fails()) {
             return redirect('/login')
                 ->withErrors($validator)
                 ->withInput();
         }
-
-        // Authenticate user
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             $request->session()->put('user_id', $user->id);
-
-            // Check user role
             if ($user->is_admin) {
-                // Redirect admin
                 return redirect()->intended('/admin');
             } else {
-                // Redirect user
                 return redirect()->intended('/');
             }
         }
-
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
