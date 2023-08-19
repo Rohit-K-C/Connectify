@@ -173,7 +173,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    min-width: 745px;
+    width: 100%;
     overflow: hidden;
     /* background-color: red; */
 }

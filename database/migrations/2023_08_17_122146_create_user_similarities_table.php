@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('similar_user_id');
-            $table->json('similarities');
+            $table->float('similarities');
             $table->timestamps();
             
             // Make sure each pair of users is unique
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_similaritites');
+        Schema::dropIfExists('user_similarities');
     }
 };

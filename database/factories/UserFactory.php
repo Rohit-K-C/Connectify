@@ -1,8 +1,8 @@
 <?php
-
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Post; // Import the Post model
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -23,13 +23,19 @@ class UserFactory extends Factory
         ];
     }
 
+    public function configure()
+    {
+        return $this->afterCreating(function (User $user) {
+            $user->likedPosts()->saveMany(Post::factory(10)->create());
+        });
+    }
+
     protected function generateShortUniqueEmail()
-{
-    do {
-        $shortEmail = Str::random(3) . time() . '@example.com';
-    } while (User::where('email', $shortEmail)->exists()); 
+    {
+        do {
+            $shortEmail = Str::random(3) . time() . '@example.com';
+        } while (User::where('email', $shortEmail)->exists()); 
 
-    return $shortEmail;
-}
-
+        return $shortEmail;
+    }
 }

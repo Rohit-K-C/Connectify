@@ -14,12 +14,13 @@ class ContentBasedController extends Controller
         $likedPosts = $targetUser->likedPosts;
         $userProfile = [];
         foreach ($likedPosts as $post) {
-            $contentFeatures = $this->extractContentFeatures($post->content);
+            $contentFeatures = $this->extractContentFeatures($post->post_info);
             $userProfile = array_merge($userProfile, $contentFeatures);
+            
         }
             $allPosts = Post::whereNotIn('post_id', $likedPosts->pluck('post_id'))->get();
         $recommendedPosts = [];
-        $threshold = 0.5;
+        $threshold = 0.1;
         foreach ($allPosts as $post) {
             $contentFeatures = $this->extractContentFeatures($post->post_info);
             $similarity = $this->calculateSimilarity($userProfile, $contentFeatures);

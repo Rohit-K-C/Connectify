@@ -71,4 +71,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class, 'receiver_id');
     }
+
+    public function getUsernameFromId($userId)
+    {
+        $user = $this->find($userId);
+
+        if ($user) {
+            return $user->user_name;
+        }
+
+        return null;
+    }
 }

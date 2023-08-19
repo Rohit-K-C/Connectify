@@ -9,7 +9,7 @@ class EmojiController extends Controller
 {
     public function getEmojis()
     {
-        $apiKey = '7d0db8ddb8ad6c5d21771f69a48c047247440847'; // Replace with your actual API key
+        $apiKey = '7d0db8ddb8ad6c5d21771f69a48c047247440847'; 
         $response = Http::get("https://emoji-api.com/emojis", [
             'access_key' => $apiKey,
         ]);

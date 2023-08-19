@@ -73,19 +73,6 @@ class UsersContoller extends Controller
             'totalFollowers' => $totalFollowers,
             'totalFollowing' => $totalFollowing,
         ]);
-        // $posts = Post::where('user_id', $user_id)->get();
-        // if ($posts->isEmpty()) {
-        //     $posts = (object)[
-        //         'post_id' => null,
-        //         'post_info' => null,
-        //         'post_image' => null,
-        //         'user_id' => null,
-        //         'created_at' => null,
-        //         'updated_at' => null,
-        //     ];
-        // }
-
-        // return view('userProfile', ['user' => $user, 'posts' => $posts]);
     }
 
 

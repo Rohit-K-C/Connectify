@@ -16,10 +16,7 @@
             background: whitesmoke;
         }
 
-        /* .emoji-item {
-            border: 1px solid #ccc;
-            
-        } */
+
 
         .emoji-item>p {
             /* background: red; */

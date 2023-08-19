@@ -29,7 +29,7 @@
     @endif
 
     <script>
-            // Automatically hide the success message after 5 seconds
+        // Automatically hide the success message after 5 seconds
         setTimeout(function() {
             document.getElementById('successAlert').style.display = 'none';
         }, 5000);
@@ -104,10 +104,18 @@
             @endif
         </div>
         <div class="mid-section">
+            @if($user->id === auth()->user()->id)
             <div class="top">
                 <span class="name">{{ $user->user_name }}</span>
                 <span class="settings" onclick="editProfile()">Edit profile</span>
             </div>
+            @else
+            <div class="top">
+                <span class="name">{{ $user->user_name }}</span>
+            </div>
+            @endif
+
+
             <script>
                 function editProfile() {
                     var element = document.getElementById("display").style.display = "block";
@@ -118,7 +126,8 @@
                         $user->posts->count() }} Posts</span></a>
                 <a class="custom-btn btn-8"><span class="mid-span" onclick="shuffle('following')">{{ $totalFollowing }}
                         Following</span></a>
-                <a class="custom-btn btn-8"><span class="mid-span" onclick="shuffle('follower')">{{ $totalFollowers }} Followers</span></a>
+                <a class="custom-btn btn-8"><span class="mid-span" onclick="shuffle('follower')">{{ $totalFollowers }}
+                        Followers</span></a>
             </div>
         </div>
     </div>
@@ -140,6 +149,7 @@
                     <a id="userName" href="">{{ $followedUser->email }}</a>
                 </div>
                 <div class="follow-unfollow">
+                    @if($user->id === auth()->user()->id)
                     <form action="/unfollow" method="POST" id="unfollowForm_{{ $followedUser->id }}">
                         @csrf
                         <input type="hidden" name="user_id" value="{{ $followedUser->id }}">
@@ -148,6 +158,8 @@
                             <p class="fu-span">Unfollow</p>
                         </button>
                     </form>
+                    @endif
+
                 </div>
 
             </div>
@@ -170,15 +182,18 @@
                     <a id="userName" href="">{{ $follower->email }}</a>
                 </div>
                 <div class="follow-unfollow">
+                    @if($user->id === auth()->user()->id)
+
+
                     <form action="/follow" method="POST" id="followForm_{{ $follower->id }}">
                         @csrf
                         <input type="hidden" name="user_id" value="{{ $follower->id }}">
                         <button type="submit" class="custom-btn fu-8"
                             onclick="return confirm('Are you sure you want to follow?')">
                             <p class="fu-span">Follow</p>
-
                         </button>
                     </form>
+                    @endif
                 </div>
 
 

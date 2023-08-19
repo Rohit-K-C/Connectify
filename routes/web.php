@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Post;
-use App\Http\Controllers\{AdminController, CommentController, ContentBasedController, EmojiController, HomePageController, LoginController, PostsController, UsersContoller, ProfileController, LikeController, MessagesController, SearchController, UserSimilarities};
+use App\Http\Controllers\{AdminController, CombinedController, CommentController, ContentBasedController, EmojiController, HomePageController, LoginController, PostsController, UsersContoller, ProfileController, LikeController, MessagesController, SearchController, UserSimilarities};
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\Console\Input\Input;
 
@@ -16,7 +16,11 @@ use Symfony\Component\Console\Input\Input;
 //using eloquent model to retrieve data from database
 // Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 
-Route::get('/', [HomePageController::class, 'index']);
+
+Route::get('/', [CombinedController::class, 'index'])->name('homepage.index');
+
+// Route::get('/', [HomePageController::class, 'index']);
+
 
 Route::match(['GET', 'POST'], '/logout', [LoginController::class, 'logout']);
 
