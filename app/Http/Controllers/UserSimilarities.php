@@ -17,7 +17,7 @@ class UserSimilarities extends Controller
         foreach ($users as $user) {
             foreach ($users as $otherUser) {
                 if ($user->id !== $otherUser->id) {
-                    $similarity = $this->calculateSimilarity($user, $otherUser);
+                    $similarity = $this->calculateUserSimilarity($user, $otherUser);
                     DB::table('user_similarities')->updateOrInsert(
                         ['user_id' => $user->id, 'similar_user_id' => $otherUser->id],
                         ['similarities' => $similarity]
@@ -28,7 +28,7 @@ class UserSimilarities extends Controller
     }
 
 
-    private function calculateSimilarity($userA, $userB)
+    private function calculateUserSimilarity($userA, $userB)
     {
         $likedPostsA = $userA->likedPosts()->pluck('posts.post_id')->toArray();
         $likedPostsB = $userB->likedPosts()->pluck('posts.post_id')->toArray();
@@ -63,7 +63,7 @@ class UserSimilarities extends Controller
     
 
 
-    public function generateRecommendations($userId)
+    public function generateUsersRecommendation($userId)
 {
     $user = User::find($userId);
     $userSimilarities = DB::table('user_similarities')

@@ -10,14 +10,12 @@
             <a href="{{ route('dashboard') }}" id="dashboard"><i class="fa-solid fa-grip"></i>Dashboard</a>
             <a href="{{ route('manage-user') }}" id="manage-user"><i class="fa-solid fa-users"></i>Manage User</a>
             <a href="{{ route('manage-post') }}" id="manage-post"><i class="fa-solid fa-book"></i>Manage Post</a>
-            <a href="{{ route('analytics') }}" id="analytics"><i class="fa-solid fa-chart-line"></i>Analytics and
-                Reports</a>
             <a href="{{ route('settings') }}" id="settings"><i class="fa-solid fa-gear"></i>Settings</a>
 
         </div>
 
         <div class="logout-container">
-            <a><i class="fa-solid fa-user"></i>Rohit</a>
+            <a><i class="fa-solid fa-user"></i>{{ Auth::user()->user_name }}</a>
             <a href="{{ url('/logout') }}"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
         </div>
     </div>
@@ -47,10 +45,6 @@
                 iframe.src = this.getAttribute('href');
             });
 
-            analytics.addEventListener('click', function (event) {
-                event.preventDefault();
-                iframe.src = this.getAttribute('href');
-            });
             settings.addEventListener('click', function (event) {
                 event.preventDefault();
                 iframe.src = this.getAttribute('href');

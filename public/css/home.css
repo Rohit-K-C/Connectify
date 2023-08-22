@@ -45,7 +45,7 @@ a {
     background-color: rgb(111, 227, 111);
 }
 .you-may{
-    font-size: 25px;
+    font-size: 22px;
     font-family: sans-serif;
     font-weight: bold;
 }
@@ -66,7 +66,13 @@ a {
     background-color: #1e1f24;
     box-shadow: 0 2px 4px rgbA(38, 40, 47, 0.1);
 }
-
+#toggle-emoji-grid{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+}
 .logo {
     display: flex;
     justify-content: center;
@@ -246,6 +252,19 @@ img[src=""] {
     z-index: 5;
     top: 60px;
     left: 650px;
+    border-radius: 5px;
+    justify-content: center;
+}
+#search-form{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+#search-input{
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 100%;
+    padding-left: 5px;
 }
 #search-results {
     color: black;

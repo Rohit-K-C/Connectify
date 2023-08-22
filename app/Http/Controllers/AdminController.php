@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class AdminController extends Controller
 {
 
     public function index()
     {
+
         return view('adminDashboard');
     }
 
@@ -42,5 +44,26 @@ class AdminController extends Controller
             $results = Post::paginate(5);
         }
         return view('manage_post', compact('results', 'users', 'search'));
+    }
+    public function dashboard()
+    {
+        $totalUsers = User::count();
+        $startDate = Carbon::now()->subDays(7); // Calculate the date 7 days ago
+
+        $newUsers = User::where('created_at', '>=', $startDate)
+            ->count();
+        $totalPosts = Post::count();
+        $postStartDate = Carbon::now()->subDays(7); // Calculate the date 7 days ago
+
+        $newPosts = Post::where('created_at', '>=', $postStartDate)
+            ->count();
+      
+            return view('dashboard', [
+                'totalUsers' => $totalUsers,
+                'newUsers' => $newUsers,
+                'totalPosts' => $totalPosts,
+                'newPosts' => $newPosts,
+            ]);
+            
     }
 }

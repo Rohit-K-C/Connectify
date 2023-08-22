@@ -24,8 +24,7 @@
             @foreach ($recommendedPosts as $recommendedPost)
             <div class="recommend-div">
                 <span class="post-inforamtion">{{ $recommendedPost['post']->post_info }}
-                    <a
-                        class="read-more"
+                    <a class="read-more"
                         href="{{ route('user.profile', ['encodedUsername' => urlencode($recommendedPost['post']->user->getUsernameFromId($recommendedPost['post']->user_id))]) }}">
                         Read
                     </a>
@@ -85,10 +84,13 @@
                     <div class="rotate" onclick="hideComments()"><span>+</span></div>
                     <form action="{{ route('submit-comment.comment', ['postId' => $post->post_id]) }}" method="POST">
                         @csrf
+                        <a href="#" id="toggle-emoji-grid"><i class="fa-regular fa-face-smile"></i></a>
                         <input type="hidden" name="post_id" value="{{ $post->post_id }}">
-                        <input type="text" placeholder="Write a comment..." name="comment">
+                        <input type="text" placeholder="Write a comment..." name="comment" id="emoji-input">
+
                         <button type="submit">Submit</button>
                     </form>
+                    @include('emojis')
                     @forelse ($post->comments as $comment)
                     <div class="comment">
                         <div class="cmnt-pp-image">
@@ -113,7 +115,23 @@
             </div>
             @endforeach
         </div>
-        <div class="right-recommend">Hello</div>
+        <div class="right-recommend">
+
+            <label for="" class="you-may">Suggested content based on your recent engagement.</label>
+            @foreach ($user_based as $user)
+            <div class="recommend-div">
+                <span class="post-inforamtion">{{ $user->post_info }}
+                    <a class="read-more"
+                        href="{{ route('user.profile', ['encodedUsername' => urlencode($user->user->getUsernameFromId($user->user_id))]) }}">
+                        Read
+                    </a>
+
+
+                </span>
+            </div>
+
+            @endforeach
+        </div>
 
     </div>
     <script>

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class HomePageController extends Controller
 {
@@ -31,6 +32,9 @@ class HomePageController extends Controller
             $posts = Post::with('comments')->get();
             // dd($posts);
             $posts->load('user.profileImage');
+
+
+           
 
             return view('homepage', [
                 'posts' => $posts,

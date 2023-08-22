@@ -52,7 +52,7 @@ Route::get('/profile', [ProfileController::class, 'index']);
 // Route::get('/calculate-similarities', [UserSimilarities::class, 'calculateUserSimilarities']);
 
 Route::get('/calculate-user-similarities', [UserSimilarities::class, 'calculateUserSimilarities'])->name('calculateUserSimilarities');
-Route::get('/generate-recommendations/{userId}', [UserSimilarities::class, 'generateRecommendations'])->name('generateRecommendations');
+Route::get('/generate-recommendations/{userId}', [UserSimilarities::class, 'generateUsersRecommendation'])->name('generateUsersRecommendation');
 
 Route::get('/content-based-recommendations', [ContentBasedController::class, 'generateContentBasedRecommendations'])->name('contentBasedRecommendations');
 
@@ -89,10 +89,11 @@ Route::get('/user/{encodedUsername}', [UsersContoller::class, 'showProfile'])->n
 
 
 // admin dashboard link routes
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 
+Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 Route::get('/manage-user', [AdminController::class, 'manageUser'])->name('manage-user');
 Route::delete('/users/{user}', [UsersContoller::class, 'destroy'])->name('users.destroy');
 Route::post('/users/{user}', [UsersContoller::class,'update'])->name('users.update');
