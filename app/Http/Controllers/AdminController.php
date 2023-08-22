@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -65,5 +66,30 @@ class AdminController extends Controller
                 'newPosts' => $newPosts,
             ]);
             
+    }
+    public function notify(){
+        // $from =$request->input('from');
+        // $to =$request->input('to');
+        // $content = $request->input('content');
+        // dd($request);
+        // $notification = new Notification();
+        // $notification->from = $from;
+        // $notification->to = $to;
+        // $notification->content = $content;
+        // $notification->save();
+        return view('notify');
+    }
+    public function sendNotification(Request $request)
+    {
+        // Retrieve form data
+        $from = 'admin@gmail.com'; // You can set a default "From" address
+        $to = $request->input('to');
+        $content = $request->input('content');
+        $notification = new Notification();
+        $notification->from = $from;
+        $notification->to = $to;
+        $notification->content = $content;
+        $notification->save();
+        return redirect()->back()->with('success', 'Notification sent successfully!');
     }
 }

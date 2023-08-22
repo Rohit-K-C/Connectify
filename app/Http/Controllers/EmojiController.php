@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -15,7 +16,6 @@ class EmojiController extends Controller
         ]);
 
         $emojis = $response->json();
-
         return view('emojis', compact('emojis'));
     }
 }

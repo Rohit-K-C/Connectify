@@ -27,9 +27,9 @@ Route::match(['GET', 'POST'], '/logout', [LoginController::class, 'logout']);
 
 
 
-Route::get('/notification', function () {
-    return view('notification');
-});
+// Route::get('/notification', function () {
+//     return view('notification');
+// });
 // Route::get('/message', function () {
 //     return view('message');
 // });
@@ -85,6 +85,7 @@ Route::get('/admin', [AdminController::class, 'index']);
 
 // Route::get('/user/{username}', [UsersContoller::class, 'showProfile'])->name('user.profile');
 Route::get('/user/{encodedUsername}', [UsersContoller::class, 'showProfile'])->name('user.profile');
+Route::post('/user/fu', [UsersContoller::class, 'fuCheck']);
 
 
 
@@ -108,6 +109,10 @@ Route::get('/analytics', function () {
     return view('analytics');
 })->name('analytics');
 
-Route::get('/settings', function () {
-    return view('settings');
-})->name('settings');
+Route::get('/notification', [AdminController::class, 'notify'])->name('notification');
+Route::post('/notify', [AdminController::class, 'sendNotification'])->name('send.notification');
+Route::get('/viewnotification', [UsersContoller::class, 'viewNotification']);
+
+// Route::get('/notify', function () {
+//     return view('notify');
+// })->name('notify');

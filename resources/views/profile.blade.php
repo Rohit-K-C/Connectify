@@ -104,14 +104,36 @@
             @endif
         </div>
         <div class="mid-section">
+
             @if($user->id === auth()->user()->id)
             <div class="top">
-                <span class="name">{{ $user->user_name }}</span>
+                <span class="name">
+                    {{ $user->user_name }}
+
+                </span>
                 <span class="settings" onclick="editProfile()">Edit profile</span>
             </div>
             @else
             <div class="top">
-                <span class="name">{{ $user->user_name }}</span>
+                <span class="name">
+                    {{ $user->user_name }}
+
+                    @if ($check === null)
+                    <form action="/user/fu" method="POST">
+                        @csrf
+                        <input type="number" name="otherUser" value="{{ $user->id }}" hidden>
+                        <input type="submit" value="follow" class="flw">
+                    </form>
+                    @else
+                    <form action="/user/fu" method="POST">
+                        @csrf
+                        <input type="number" name="otherUser" value="{{ $check->followed_id }}" hidden>
+                        <input type="submit" value="unfollow" class="flw">
+                    </form>
+                    @endif
+
+
+                </span>
             </div>
             @endif
 

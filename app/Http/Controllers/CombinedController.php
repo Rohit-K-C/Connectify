@@ -59,7 +59,7 @@ class CombinedController extends Controller
             $emojis = $response->json();
 
             //userbased
-            $user_based = $this->generateUsersRecommendation(2);
+            $user_based = $this->generateUsersRecommendation(Auth::user()->id);
             // dd($user_based);
             return view('homepage', [
                 'posts' => $posts,

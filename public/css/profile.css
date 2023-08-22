@@ -606,7 +606,19 @@ body {
 #uploaded-image {
     max-width: 100%;
 }
-
+.name{
+    display: flex;
+    gap: 20px;
+}
+.flw{
+    border-radius: 5px;
+    background-color: whitesmoke;
+    color: black;
+    padding: 5px;
+}
+.flw:hover{
+    background-color: lightgray;
+}
 .display-comments form {
     display: flex;
     justify-content: center;

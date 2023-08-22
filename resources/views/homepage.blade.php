@@ -69,6 +69,7 @@
                         </a>
                         <span id="count-{{ $post->post_id }}" class="like-count">
                             {{ $likesData[$post->post_id] ?? 0 }}
+
                         </span>
                         <a class="comment-btn" onclick="showComments('{{ $post->post_id }}')">
                             <i id="comment-btn" class="fa-solid fa-comment"></i>

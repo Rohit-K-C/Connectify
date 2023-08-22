@@ -10,7 +10,7 @@
             <a href="{{ route('dashboard') }}" id="dashboard"><i class="fa-solid fa-grip"></i>Dashboard</a>
             <a href="{{ route('manage-user') }}" id="manage-user"><i class="fa-solid fa-users"></i>Manage User</a>
             <a href="{{ route('manage-post') }}" id="manage-post"><i class="fa-solid fa-book"></i>Manage Post</a>
-            <a href="{{ route('settings') }}" id="settings"><i class="fa-solid fa-gear"></i>Settings</a>
+            <a href="{{ route('notification') }}" id="settings"><i class="fa-regular fa-bell"></i>Notify</a>
 
         </div>
 

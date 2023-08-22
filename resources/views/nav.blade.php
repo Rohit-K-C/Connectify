@@ -78,7 +78,7 @@
                     });
                 });
             </script>
-            <a href="/notification" id="notification-link"><i class="fa-sharp fa-solid fa-bell"></i></a>
+            <a href="/viewnotification" id="notification-link"><i class="fa-sharp fa-solid fa-bell"></i></a>
             <a href="/message-box" id="message-link"><i class="fa-solid fa-message"></i></a>
             <a href="/addQuestion" id="addQuestion-link"><i class="fa-regular fa-square-plus"></i></a>
             <a id="profile-link"><i onclick="settings()" class="fa-solid fa-user"></i></a>

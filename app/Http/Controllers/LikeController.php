@@ -26,7 +26,6 @@ class LikeController extends Controller
         }
 
         $totalLikes = Like::where('post_id', $postId)->count();
-
         return response()->json(['status' => 'success', 'total_likes' => $totalLikes]);
     }
 }
