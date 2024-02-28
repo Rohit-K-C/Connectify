@@ -38,6 +38,8 @@ class ContentBasedController extends Controller
     {
        
         $tokens = explode(' ', strtolower($text));
+
+        
         $filteredTokens = array_filter($tokens, function ($token) {
             return !in_array($token, ['and', 'the', 'is', 'of', 'a', ',', '.', '!', '?']);
         });
